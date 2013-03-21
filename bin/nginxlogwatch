@@ -1,0 +1,263 @@
+#! /usr/bin/env ruby
+#
+#
+#
+#
+#
+#
+#
+#
+#
+require 'yaml'
+require 'fileutils'
+require 'mongo'
+
+require "net/http"
+require "uri"
+
+require "../lib/nginxlogstatistics"
+
+# method: jw_loadconfig
+def jw_loadconfig
+  root=File.absolute_path(File.join(File.dirname(__FILE__), ".."))
+  abort("#{root} is not a directory.") unless File.exist?(root)
+
+  cfg_file = File.join(root, "config/nginxlogwatch.yml")
+
+  config = {'host'=>'127.0.0.1','nginxlog'=>'', 'applogpath'=>'','logip'=>'','db_host'=>'','db_port'=>27017}
+  File.exist?(cfg_file) && File.open(cfg_file) do |f|
+    config.update(YAML.load(f))
+  end
+
+  config
+end
+
+# readpos(file)  -> {"inode"=>"","pos"=>"","date"=>"%Y%m%d"}
+# get file pos at last
+def jw_loadreadpos(file)
+  info =  {"inode"=>0,"pos"=>0,"date"=>""}
+#  tmp_file = File.join(filepath,"nginxlogwatch")
+  File.exist?(file) && File.open(file) do |f|
+    info.update(YAML.load(f))
+  end
+  info
+end
+
+def jw_savereadpos(info,file)
+  root = File.absolute_path(File.join(file, ".."))
+  FileUtils.mkdir_p(root) unless File.exist?(root)
+  File.open(file,'w') {|f| YAML.dump(info,f)}
+end
+
+#
+def jw_read_app_id(aline)
+    result = aline.scan(/app_id:(\d+)\s/)
+    if result[0] == nil then
+      return "0"
+    else
+        return result[0][0]
+    end
+end
+
+#
+# date +"%Y%m%d %H:%M:%S" --date="11 Mar 2013 16:20:57 +0800"
+# 显示Unix时间戳：Time.now.to_i
+def jw_read_local_time(aline)
+  src = aline.scan(/-\s\[(\S+\s\S+)\]/)
+  if src[0] == nil then
+    return 0
+  else
+    result = src[0][0]
+    result.gsub!(/\//,' ')
+    index = result.index(':')
+    result[index] = ' '
+    result = `date +"%Y %m %d %H %M %S" --date="#{result}"`.chomp
+    a = result.split(' ')
+    t = Time.mktime(a[0].to_i,a[1].to_i,a[2].to_i,a[3].to_i,a[4].to_i,a[5].to_i)
+    return t.to_i
+  end
+end
+
+#
+def jw_read_uip(aline)
+  result = aline.scan(/"\s(\S+)\sresponse/)
+  if result[0] == nil then
+    return ""
+  else
+    return result[0][0]
+  end
+end
+#
+def jw_read_resp_time(aline)
+  result = aline.scan(/response_time:(\d+)\s/)
+  if result[0] == nil then
+    return 0
+  else
+    return result[0][0].to_i
+  end
+end
+
+#
+def jw_read_backend_addr(aline)
+  result = aline.scan(/backend:(\S+)\s/)
+  if result[0] == nil then
+    return ""
+  else
+    return result[0][0]
+  end
+end
+
+#
+def jw_readlogdata(aline)
+  log_data = {"app_id"=>"0","local_time"=>0,"uip"=>"","resp_time"=>0,"backend_addr"=>""}
+  app_id = jw_read_app_id(aline)
+  unless app_id == "0" then
+    log_data["app_id"] = app_id
+    log_data["local_time"] = jw_read_local_time(aline)
+    log_data["uip"] = jw_read_uip(aline)
+    log_data["resp_time"] = jw_read_resp_time(aline)
+    log_data["backend_addr"] = jw_read_backend_addr(aline)
+  end
+  log_data
+end
+
+#
+def jw_postloginfo(uri,post_body)
+  begin
+  #  post_body=[]
+  #  post_body << "\"app_id\":\"#{app_id}\""
+  #  post_body={"app_id"=>"","user_name"=>"","group"=>"nginx","action"=>"add","direction"=>"log","data"=>[{"id"=>0,"ip"=>"","logs"=>[]}]}
+  #  uri = URI.parse("http://#{cfg["logip"]}/log/update.action")
+    http = Net::HTTP.new(uri.host, uri.port)
+    request = Net::HTTP::Post.new(uri.request_uri)
+    request.body = post_body
+  #request["Content-Type"] = "multipart/form-data, boundary=#{BOUNDARY}"
+
+    response = http.request(request)
+  rescue Exception => e
+    puts e
+  end
+
+end
+
+# jw_readlog(file,pos,config)   ->  pos
+def jw_readlog(file,pos,config)
+  root = config["applogpath"]
+  FileUtils.mkdir_p(root) unless File.exist?(root)
+
+  begin
+    db = Mongo::Connection.new(config["db_host"],config["db_port"]).db("jae_nginx_log") #{ |db|  }
+    db.auth(config["db_user"],config["db_pwd"]) if config["db_user"]
+
+  # coll = db.collection('log') if db
+  rescue Exception => e
+    puts e
+  end
+
+  file.pos = pos
+  uri = URI.parse("http://#{config["logip"]}/log/update.action")
+  post_body={"app_id"=>"","user_name"=>"","group"=>"nginx","action"=>"add","direction"=>"log",\
+  "data"=>[{"id"=>0,"ip"=>"","logs"=>[]}]}
+  post_body["data"][0]["ip"] = config["host"]
+  while line = file.gets
+    #puts line
+    log = jw_readlogdata(line)
+    app_id = log["app_id"]
+    unless  app_id == "0" then
+      #write file
+      app_log = File.join(root,"app_#{app_id}_access.log")
+
+      unless File.exist?(app_log) then
+        post_body["app_id"] = app_id
+        post_body["data"][0]["logs"][0]= app_log
+        jw_postloginfo(uri,post_body.to_s.gsub(/=>/,':'))
+      end
+
+      File.open(app_log,'a+') { |f| f.write(line) }
+
+      #write mongodb
+      begin
+        coll = nil
+        coll = db.collection("log_#{app_id}") if db
+        coll.insert(log) if coll
+      rescue Exception => e
+         puts e
+      end
+    end
+
+  end
+
+  file.pos
+end
+
+# jw_findlastlog(inode) -> filename
+#
+#  logrotate config
+#    config["nginxlog"]  {
+#     notifempty
+#     daily
+#     rotate 7
+#     dateext
+#     sharedscripts
+#     postrotate
+#       /bin/kill -USR1 `/bin/cat /var/run/nginx_router.pid`
+#     endscript
+# }
+def jw_findlastlog(log,date)
+#  log_root = File.join(log,"..")
+  index = log.rindex('/')
+  log_root = log.slice(0,index)
+  log_name = log.slice(index-log.size+1..-1)
+  #puts log_root
+  #puts log_name
+  file = `ls #{log_root} | grep #{log_name}-#{date}`.chomp
+  return File.join(log_root,file)
+end
+
+# jw_dowatch(config)   ->  nil
+def jw_dowatch(config)
+  log = config["nginxlog"]
+
+  File.exist?(log) && File.open(log) do |f|
+    tmp_file = File.join(config["applogpath"],"nginxlogwatch")
+    last_read = jw_loadreadpos(tmp_file)
+
+    if f.stat.ino == last_read["inode"] || last_read["inode"] == 0  then
+      last_read["pos"] = jw_readlog(f,last_read["pos"],config)
+    else
+      file = jw_findlastlog(log,last_read["date"])
+      File.exist?(file) && File.open(file) do |lf|
+        jw_readlog(lf,last_read["pos"],config) if lf.stat.ino == last_read["inode"]
+      end
+      last_read["pos"] = jw_readlog(f,0,config)
+    end
+    last_read["inode"] = f.stat.ino
+    last_read["date"] = `date +%Y%m%d`.chomp
+
+    jw_savereadpos(last_read,tmp_file)
+  end
+end
+
+cfg = jw_loadconfig
+
+require 'redis'
+      Redis
+#puts js_statistics_req("1",100000000)
+#tests = " - [11/Mar/2013:16:20:57 +0800]"
+#puts jw_read_local_time(tests)
+
+#tf = jw_findlastlog(cfg["nginxlog"],"")
+#puts tf
+#puts "123" if File.exist?(tf)
+#abort("djfa")
+
+loop do
+  jw_dowatch(cfg)
+  sleep(2)
+end
+
+
+
+
+
+
