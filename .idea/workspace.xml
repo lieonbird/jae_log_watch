@@ -75,19 +75,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nginxlogstatistics.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="nginxlogstatistics.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/nginxlogstatistics.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="18" selection-start="1008" selection-end="1008" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nginxlogwatch" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bin/nginxlogwatch">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="241" column="0" selection-start="5966" selection-end="5966" vertical-scroll-proportion="0.37198067">
+            <state line="39" column="18" selection-start="1008" selection-end="1008" vertical-scroll-proportion="0.2753623">
               <folding />
             </state>
           </provider>
@@ -605,13 +596,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/nginxlogstatistics.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="18" selection-start="1008" selection-end="1008" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/redis-3.0.2/lib/redis/client.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="57" column="36" selection-start="867" selection-end="867" vertical-scroll-proportion="0.0">
@@ -628,7 +612,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bin/nginxlogwatch">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="241" column="0" selection-start="5966" selection-end="5966" vertical-scroll-proportion="0.37198067">
+        <state line="243" column="83" selection-start="6048" selection-end="6048" vertical-scroll-proportion="0.44444445">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/nginxlogstatistics.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="18" selection-start="1008" selection-end="1008" vertical-scroll-proportion="0.2753623">
           <folding />
         </state>
       </provider>
