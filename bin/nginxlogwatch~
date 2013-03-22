@@ -240,7 +240,8 @@ end
 
 cfg = jw_loadconfig
 
-
+require 'redis'
+      Redis
 #puts js_statistics_req("1",100000000)
 #tests = " - [11/Mar/2013:16:20:57 +0800]"
 #puts jw_read_local_time(tests)
