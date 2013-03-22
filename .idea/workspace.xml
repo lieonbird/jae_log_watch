@@ -84,19 +84,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nginxlogwatch" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="nginxlogwatch" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bin/nginxlogwatch">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="243" column="8" selection-start="5991" selection-end="5991" vertical-scroll-proportion="0.0">
+            <state line="241" column="0" selection-start="5966" selection-end="5966" vertical-scroll-proportion="0.37198067">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="redis.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="redis.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/redis-3.0.2/lib/redis.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="260" column="44" selection-start="5882" selection-end="5882" vertical-scroll-proportion="-0.048309177">
+            <state line="30" column="40" selection-start="641" selection-end="641" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="client.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/redis-3.0.2/lib/redis/client.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="57" column="36" selection-start="867" selection-end="867" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -177,6 +186,16 @@
               <option name="myItemId" value="jaelogagent" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jaelogagent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jaelogagent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -219,7 +238,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="ruby.project.structure" />
+    <property name="options.lastSelected" value="settings.github" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
   </component>
@@ -502,13 +521,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/bson-1.5.2/lib/bson/types/object_id.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="0" selection-start="3056" selection-end="3056" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/fileutils.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="13" selection-start="6" selection-end="15" vertical-scroll-proportion="0.025041737">
@@ -600,16 +612,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/nginxlogwatch">
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/redis-3.0.2/lib/redis/client.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="243" column="8" selection-start="5991" selection-end="5991" vertical-scroll-proportion="0.0">
+        <state line="57" column="36" selection-start="867" selection-end="867" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/redis-3.0.2/lib/redis.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="260" column="44" selection-start="5882" selection-end="5882" vertical-scroll-proportion="-0.048309177">
+        <state line="30" column="40" selection-start="641" selection-end="641" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/nginxlogwatch">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="241" column="0" selection-start="5966" selection-end="5966" vertical-scroll-proportion="0.37198067">
           <folding />
         </state>
       </provider>
