@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a423beb9-91de-42ba-bb22-f31da25573af" name="Default" comment="redis conf">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jaelogagent.iml" afterPath="$PROJECT_DIR$/.idea/jaelogagent.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/nginxlogstatistics.rb" afterPath="$PROJECT_DIR$/lib/nginxlogstatistics.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nginxlogwatch" afterPath="$PROJECT_DIR$/bin/nginxlogwatch" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/redis.yml" afterPath="$PROJECT_DIR$/config/redis.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -13,7 +10,7 @@
     <ignored path=".idea/workspace.xml" />
     <file path="/jaelogwatch" changelist="a423beb9-91de-42ba-bb22-f31da25573af" time="1363224661473" ignored="false" />
     <file path="/fragment.rb" changelist="a423beb9-91de-42ba-bb22-f31da25573af" time="1363340995206" ignored="false" />
-    <file path="/nginxlogwatch" changelist="a423beb9-91de-42ba-bb22-f31da25573af" time="1363934693804" ignored="false" />
+    <file path="/nginxlogwatch" changelist="a423beb9-91de-42ba-bb22-f31da25573af" time="1363943478206" ignored="false" />
     <file path="/nginxlogwatch.yml" changelist="a423beb9-91de-42ba-bb22-f31da25573af" time="1363922144973" ignored="false" />
     <file path="/a.dummy" changelist="a423beb9-91de-42ba-bb22-f31da25573af" time="1363335811540" ignored="false" />
     <file path="/Dummy.txt" changelist="a423beb9-91de-42ba-bb22-f31da25573af" time="1363938133088" ignored="false" />
@@ -65,19 +62,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nginxlogstatistics.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="nginxlogstatistics.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/nginxlogstatistics.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="63" selection-start="1038" selection-end="1038" vertical-scroll-proportion="0.039267015">
+            <state line="17" column="63" selection-start="371" selection-end="371" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nginxlogwatch" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="nginxlogwatch" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bin/nginxlogwatch">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="181" column="74" selection-start="4579" selection-end="4579" vertical-scroll-proportion="0.0">
+            <state line="19" column="41" selection-start="179" selection-end="179" vertical-scroll-proportion="-4.078534">
               <folding />
             </state>
           </provider>
@@ -104,7 +101,7 @@
       <file leaf-file-name="nginxlogwatch.yml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/nginxlogwatch.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="26" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
+            <state line="5" column="21" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -113,7 +110,7 @@
       <file leaf-file-name="redis.yml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/redis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="62" selection-start="75" selection-end="75" vertical-scroll-proportion="0.0">
+            <state line="3" column="52" selection-start="75" selection-end="75" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -193,48 +190,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="jaelogagent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jaelogagent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jaelogagent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jaelogagent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jaelogagent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jaelogagent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jaelogagent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -451,14 +406,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="48" y="-5" width="1319" height="774" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23917995" sideWeight="0.6551724" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23917995" sideWeight="0.6551724" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3448276" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -597,23 +552,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/redis.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="62" selection-start="75" selection-end="75" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/rubystubs193/module.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="385" column="15" selection-start="13164" selection-end="13164" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/nginxlogwatch.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="26" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -632,16 +573,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/nginxlogwatch">
+    <entry file="file://$PROJECT_DIR$/config/redis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="181" column="74" selection-start="4579" selection-end="4579" vertical-scroll-proportion="0.0">
+        <state line="3" column="52" selection-start="75" selection-end="75" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/nginxlogwatch.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="21" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/nginxlogstatistics.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="63" selection-start="1038" selection-end="1038" vertical-scroll-proportion="0.039267015">
+        <state line="17" column="63" selection-start="371" selection-end="371" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/nginxlogwatch">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="41" selection-start="179" selection-end="179" vertical-scroll-proportion="-4.078534">
           <folding />
         </state>
       </provider>

@@ -17,7 +17,7 @@ require 'redis'
 require "net/http"
 require "uri"
 
-require "../lib/nginxlogstatistics"
+#require "../lib/nginxlogstatistics"
 
 # method: jw_loadconfig
 def jw_loadconfig
