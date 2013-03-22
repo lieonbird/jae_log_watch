@@ -14,17 +14,17 @@ require 'fileutils'
 #require 'mongo'
 require 'redis'
 
-require "net/http"
-require "uri"
+require 'net/http'
+require 'uri'
 
 #require "../lib/nginxlogstatistics"
 
 # method: jw_loadconfig
 def jw_loadconfig
-  root=File.absolute_path(File.join(File.dirname(__FILE__), ".."))
+  root=File.absolute_path(File.join(File.dirname(__FILE__), '..'))
   abort("#{root} is not a directory.") unless File.exist?(root)
 
-  cfg_file = File.join(root, "config/nginxlogwatch.yml")
+  cfg_file = File.join(root, 'config/nginxlogwatch.yml')
 
   config = {'host'=>'127.0.0.1','nginxlog'=>'', 'applogpath'=>'','logip'=>'','db_host'=>'','db_port'=>27017}
   File.exist?(cfg_file) && File.open(cfg_file) do |f|
@@ -32,7 +32,7 @@ def jw_loadconfig
   end
 
   # read redis.yml
-  cfg_file = File.join(root, "config/redis.yml")
+  cfg_file = File.join(root, 'config/redis.yml')
   $jw_cfg_redis = {}
   File.exist?(cfg_file) && File.open(cfg_file) do |f|
     $jw_cfg_redis.update(YAML.load(f))
@@ -44,7 +44,7 @@ end
 # readpos(file)  -> {"inode"=>"","pos"=>"","date"=>"%Y%m%d"}
 # get file pos at last
 def jw_loadreadpos(file)
-  info =  {"inode"=>0,"pos"=>0,"date"=>""}
+  info =  {'inode' =>0, 'pos' =>0, 'date' => ''}
 #  tmp_file = File.join(filepath,"nginxlogwatch")
   File.exist?(file) && File.open(file) do |f|
     info.update(YAML.load(f))
@@ -53,7 +53,7 @@ def jw_loadreadpos(file)
 end
 
 def jw_savereadpos(info,file)
-  root = File.absolute_path(File.join(file, ".."))
+  root = File.absolute_path(File.join(file, '..'))
   FileUtils.mkdir_p(root) unless File.exist?(root)
   File.open(file,'w') {|f| YAML.dump(info,f)}
 end
@@ -61,10 +61,10 @@ end
 #
 def jw_read_app_id(aline)
     result = aline.scan(/app_id:(\d+)\s/)
-    if result[0] == nil then
-      return "0"
+    if result[0] == nil
+      '0'
     else
-        return result[0][0]
+      result[0][0]
     end
 end
 
@@ -73,8 +73,8 @@ end
 # 显示Unix时间戳：Time.now.to_i
 def jw_read_local_time(aline)
   src = aline.scan(/-\s\[(\S+\s\S+)\]/)
-  if src[0] == nil then
-    return 0
+  if src[0] == nil
+    0
   else
     result = src[0][0]
     result.gsub!(/\//,' ')
@@ -83,49 +83,49 @@ def jw_read_local_time(aline)
     result = `date +"%Y %m %d %H %M %S" --date="#{result}"`.chomp
     a = result.split(' ')
     t = Time.mktime(a[0].to_i,a[1].to_i,a[2].to_i,a[3].to_i,a[4].to_i,a[5].to_i)
-    return t.to_i
+    t.to_i
   end
 end
 
 #
 def jw_read_uip(aline)
   result = aline.scan(/"\s(\S+)\sresponse/)
-  if result[0] == nil then
-    return ""
+  if result[0] == nil
+    ''
   else
-    return result[0][0]
+    result[0][0]
   end
 end
 #
 def jw_read_resp_time(aline)
   result = aline.scan(/response_time:(\d+)\s/)
-  if result[0] == nil then
-    return 0
+  if result[0] == nil
+    0
   else
-    return result[0][0].to_i
+    result[0][0].to_i
   end
 end
 
 #
 def jw_read_backend_addr(aline)
   result = aline.scan(/backend:(\S+)\s/)
-  if result[0] == nil then
-    return ""
+  if result[0] == nil
+    ''
   else
-    return result[0][0]
+    result[0][0]
   end
 end
 
 #
 def jw_readlogdata(aline)
-  log_data = {"app_id"=>"0","local_time"=>0,"uip"=>"","resp_time"=>0,"backend_addr"=>""}
+  log_data = {'app_id' => '0', 'local_time' =>0, 'uip' => '', 'resp_time' =>0, 'backend_addr' => ''}
   app_id = jw_read_app_id(aline)
-  unless app_id == "0" then
-    log_data["app_id"] = app_id
-    log_data["local_time"] = jw_read_local_time(aline)
-    log_data["uip"] = jw_read_uip(aline)
-    log_data["resp_time"] = jw_read_resp_time(aline)
-    log_data["backend_addr"] = jw_read_backend_addr(aline)
+  unless app_id == '0'
+    log_data['app_id'] = app_id
+    log_data['local_time'] = jw_read_local_time(aline)
+    log_data['uip'] = jw_read_uip(aline)
+    log_data['resp_time'] = jw_read_resp_time(aline)
+    log_data['backend_addr'] = jw_read_backend_addr(aline)
   end
   log_data
 end
@@ -142,7 +142,7 @@ def jw_postloginfo(uri,post_body)
     request.body = post_body
   #request["Content-Type"] = "multipart/form-data, boundary=#{BOUNDARY}"
 
-    response = http.request(request)
+    http.request(request)
   rescue Exception => e
     puts e
   end
@@ -150,8 +150,12 @@ def jw_postloginfo(uri,post_body)
 end
 
 # jw_readlog(file,pos,config)   ->  pos
+# @param file =>
+# @param pos =>
+# @param config => {}
+# @return  pos
 def jw_readlog(file,pos,config)
-  root = config["applogpath"]
+  root = config['applogpath']
   FileUtils.mkdir_p(root) unless File.exist?(root)
 
   begin
@@ -164,21 +168,21 @@ def jw_readlog(file,pos,config)
   end
 
   file.pos = pos
-  uri = URI.parse("http://#{config["logip"]}/log/update.action")
-  post_body={"app_id"=>"","user_name"=>"","group"=>"nginx","action"=>"add","direction"=>"log",\
-  "data"=>[{"id"=>0,"ip"=>"","logs"=>[]}]}
-  post_body["data"][0]["ip"] = config["host"]
+  uri = URI.parse("http://#{config['logip']}/log/update.action")
+  post_body={'app_id' => '', 'user_name' => '', 'group' => 'nginx', 'action' => 'add', 'direction' => 'log',\
+  'data' =>[{'id' =>0, 'ip' => '', 'logs' =>[]}]}
+  post_body['data'][0]['ip'] = config['host']
   while line = file.gets
     #puts line
     log = jw_readlogdata(line)
-    app_id = log["app_id"]
-    unless  app_id == "0" then
+    app_id = log['app_id']
+    unless  app_id == '0'
       #write file
       app_log = File.join(root,"app_#{app_id}_access.log")
 
-      unless File.exist?(app_log) then
-        post_body["app_id"] = app_id
-        post_body["data"][0]["logs"][0]= app_log
+      unless File.exist?(app_log)
+        post_body['app_id'] = app_id
+        post_body['data'][0]['logs'][0]= app_log
         jw_postloginfo(uri,post_body.to_s.gsub(/=>/,':'))
       end
 
@@ -194,10 +198,12 @@ def jw_readlog(file,pos,config)
         # use sorted-sets : key is "date"+"pv"+"id"+"z";score is timestamp;member is sum of req
         # use string cache sum of req: key is "date"+"pv"+"id"
         # first get sum of req
-        total = db.incr("#{cur_date}pv#{app_id}") if db
-        db.zadd("#{cur_date}pv#{app_id}z",log["local_time"],total)
+        if db
+          total = db.incr("#{cur_date}pv#{app_id}")
+          db.zadd("#{cur_date}pv#{app_id}z",log['local_time'],total)
 
-        db.zincrby("#{cur_date}uip#{app_id}z",1,log["uip"])
+          db.zincrby("#{cur_date}uip#{app_id}z",1,log['uip'])
+        end
 
       rescue Exception => e
          puts e
@@ -231,28 +237,30 @@ def jw_findlastlog(log,date)
   #puts log_root
   #puts log_name
   file = `ls #{log_root} | grep #{log_name}-#{date}`.chomp
-  return File.join(log_root,file)
+  File.join(log_root,file)
 end
 
 # jw_dowatch(config)   ->  nil
+# @param config => {}
+# @return nil
 def jw_dowatch(config)
-  log = config["nginxlog"]
+  log = config['nginxlog']
 
   File.exist?(log) && File.open(log) do |f|
-    tmp_file = File.join(config["applogpath"],"nginxlogwatch")
+    tmp_file = File.join(config['applogpath'], 'nginxlogwatch')
     last_read = jw_loadreadpos(tmp_file)
 
-    if f.stat.ino == last_read["inode"] || last_read["inode"] == 0  then
-      last_read["pos"] = jw_readlog(f,last_read["pos"],config)
+    if f.stat.ino == last_read['inode'] || last_read['inode'] == 0  then
+      last_read['pos'] = jw_readlog(f,last_read['pos'],config)
     else
-      file = jw_findlastlog(log,last_read["date"])
+      file = jw_findlastlog(log,last_read['date'])
       File.exist?(file) && File.open(file) do |lf|
-        jw_readlog(lf,last_read["pos"],config) if lf.stat.ino == last_read["inode"]
+        jw_readlog(lf,last_read['pos'],config) if lf.stat.ino == last_read['inode']
       end
-      last_read["pos"] = jw_readlog(f,0,config)
+      last_read['pos'] = jw_readlog(f,0,config)
     end
-    last_read["inode"] = f.stat.ino
-    last_read["date"] = `date +%Y%m%d`.chomp
+    last_read['inode'] = f.stat.ino
+    last_read['date'] = `date +%Y%m%d`.chomp
 
     jw_savereadpos(last_read,tmp_file)
   end
