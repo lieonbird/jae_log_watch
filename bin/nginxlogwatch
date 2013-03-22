@@ -10,7 +10,9 @@
 #
 require 'yaml'
 require 'fileutils'
-require 'mongo'
+
+#require 'mongo'
+require 'redis'
 
 require "net/http"
 require "uri"
@@ -27,6 +29,13 @@ def jw_loadconfig
   config = {'host'=>'127.0.0.1','nginxlog'=>'', 'applogpath'=>'','logip'=>'','db_host'=>'','db_port'=>27017}
   File.exist?(cfg_file) && File.open(cfg_file) do |f|
     config.update(YAML.load(f))
+  end
+
+  # read redis.yml
+  cfg_file = File.join(root, "config/redis.yml")
+  $jw_cfg_redis = {}
+  File.exist?(cfg_file) && File.open(cfg_file) do |f|
+    $jw_cfg_redis.update(YAML.load(f))
   end
 
   config
@@ -146,10 +155,10 @@ def jw_readlog(file,pos,config)
   FileUtils.mkdir_p(root) unless File.exist?(root)
 
   begin
-    db = Mongo::Connection.new(config["db_host"],config["db_port"]).db("jae_nginx_log") #{ |db|  }
-    db.auth(config["db_user"],config["db_pwd"]) if config["db_user"]
-
-  # coll = db.collection('log') if db
+#    db = Mongo::Connection.new(config["db_host"],config["db_port"]).db("jae_nginx_log") #{ |db|  }
+#    db.auth(config["db_user"],config["db_pwd"]) if config["db_user"]
+    db = Redis.new($jw_cfg_redis)
+    cur_date = `date +%Y%m%d`.chomp
   rescue Exception => e
     puts e
   end
@@ -175,14 +184,25 @@ def jw_readlog(file,pos,config)
 
       File.open(app_log,'a+') { |f| f.write(line) }
 
-      #write mongodb
       begin
-        coll = nil
-        coll = db.collection("log_#{app_id}") if db
-        coll.insert(log) if coll
+        # write mongodb
+        #coll = nil
+        #coll = db.collection("log_#{app_id}") if db
+        #coll.insert(log) if coll
+
+        # write redis
+        # use sorted-sets : key is "date"+"pv"+"id"+"z";score is timestamp;member is sum of req
+        # use string cache sum of req: key is "date"+"pv"+"id"
+        # first get sum of req
+        total = db.incr("#{cur_date}pv#{app_id}") if db
+        db.zadd("#{cur_date}pv#{app_id}z",log["local_time"],total)
+
+        db.zincrby("#{cur_date}uip#{app_id}z",1,log["uip"])
+
       rescue Exception => e
          puts e
       end
+
     end
 
   end
@@ -240,8 +260,7 @@ end
 
 cfg = jw_loadconfig
 
-require 'redis'
-      Redis
+
 #puts js_statistics_req("1",100000000)
 #tests = " - [11/Mar/2013:16:20:57 +0800]"
 #puts jw_read_local_time(tests)
