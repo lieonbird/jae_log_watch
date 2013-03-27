@@ -1,6 +1,7 @@
 #
 
 # require 'mongo'
+require 'yaml'
 require 'redis'
 require 'sinatra'
 
@@ -41,7 +42,6 @@ def js_statistics_req(app_id,ts)
 
     cur_date = `date +%Y%m%d`.chomp
     $js_db.zcount("#{cur_date}pv#{app_id}z",t1.to_s,"(#{t2}")
-
   rescue
     return -1
   end

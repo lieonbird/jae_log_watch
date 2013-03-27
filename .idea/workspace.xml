@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a423beb9-91de-42ba-bb22-f31da25573af" name="Default" comment="redis conf">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jaelogagent.iml" afterPath="$PROJECT_DIR$/.idea/jaelogagent.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/nginxlogstatistics.rb" afterPath="$PROJECT_DIR$/lib/nginxlogstatistics.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/nginxlogwatch" afterPath="$PROJECT_DIR$/bin/nginxlogwatch" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -10,12 +11,13 @@
     <ignored path=".idea/workspace.xml" />
     <file path="/jaelogwatch" changelist="a423beb9-91de-42ba-bb22-f31da25573af" time="1363224661473" ignored="false" />
     <file path="/fragment.rb" changelist="a423beb9-91de-42ba-bb22-f31da25573af" time="1363340995206" ignored="false" />
-    <file path="/nginxlogwatch" changelist="a423beb9-91de-42ba-bb22-f31da25573af" time="1363947342704" ignored="false" />
+    <file path="/nginxlogwatch" changelist="a423beb9-91de-42ba-bb22-f31da25573af" time="1364355424477" ignored="false" />
     <file path="/nginxlogwatch.yml" changelist="a423beb9-91de-42ba-bb22-f31da25573af" time="1363922144973" ignored="false" />
     <file path="/a.dummy" changelist="a423beb9-91de-42ba-bb22-f31da25573af" time="1363335811540" ignored="false" />
-    <file path="/Dummy.txt" changelist="a423beb9-91de-42ba-bb22-f31da25573af" time="1363938133088" ignored="false" />
-    <file path="/nginxlogstatistics.rb" changelist="a423beb9-91de-42ba-bb22-f31da25573af" time="1363944621761" ignored="false" />
+    <file path="/Dummy.txt" changelist="a423beb9-91de-42ba-bb22-f31da25573af" time="1364352951850" ignored="false" />
+    <file path="/nginxlogstatistics.rb" changelist="a423beb9-91de-42ba-bb22-f31da25573af" time="1364362456665" ignored="false" />
     <file path="/redis.yml" changelist="a423beb9-91de-42ba-bb22-f31da25573af" time="1363923004429" ignored="false" />
+    <file path="/client.rb" changelist="a423beb9-91de-42ba-bb22-f31da25573af" time="1364358442079" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,19 +64,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nginxlogstatistics.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="nginxlogstatistics.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/nginxlogstatistics.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="48" selection-start="1157" selection-end="1157" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nginxlogwatch" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bin/nginxlogwatch">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="178" column="27" selection-start="4310" selection-end="4310" vertical-scroll-proportion="0.41099477">
+            <state line="55" column="36" selection-start="1404" selection-end="1404" vertical-scroll-proportion="1.1629747">
               <folding />
             </state>
           </provider>
@@ -83,7 +76,7 @@
       <file leaf-file-name="redis.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/redis-3.0.2/lib/redis.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="381" column="17" selection-start="8935" selection-end="8939" vertical-scroll-proportion="-3.7741935">
+            <state line="381" column="17" selection-start="8935" selection-end="8939" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -92,7 +85,16 @@
       <file leaf-file-name="client.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/redis-3.0.2/lib/redis/client.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="392" column="51" selection-start="9236" selection-end="9236" vertical-scroll-proportion="0.0">
+            <state line="254" column="36" selection-start="5370" selection-end="5370" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nginxlogwatch" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/nginxlogwatch">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="208" column="0" selection-start="5237" selection-end="5237" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -101,7 +103,7 @@
       <file leaf-file-name="nginxlogwatch.yml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/nginxlogwatch.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="21" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0">
+            <state line="7" column="28" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -137,16 +139,17 @@
         <option value="$PROJECT_DIR$/bin/jaelogwatch" />
         <option value="$PROJECT_DIR$/config/redis.yml" />
         <option value="$PROJECT_DIR$/config/nginxlogwatch.yml" />
-        <option value="$PROJECT_DIR$/lib/nginxlogstatistics.rb" />
+        <option value="$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/redis-3.0.2/lib/redis/client.rb" />
         <option value="$PROJECT_DIR$/bin/nginxlogwatch" />
+        <option value="$PROJECT_DIR$/lib/nginxlogstatistics.rb" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="48" />
+    <option name="x" value="1414" />
     <option name="y" value="-5" />
-    <option name="width" value="1319" />
-    <option name="height" value="774" />
+    <option name="width" value="1233" />
+    <option name="height" value="1030" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -156,7 +159,13 @@
             <id />
           </State>
           <State>
+            <id>Internationalization issues</id>
+          </State>
+          <State>
             <id>Ruby</id>
+          </State>
+          <State>
+            <id>SQL</id>
           </State>
           <State>
             <id>Spelling</id>
@@ -164,7 +173,7 @@
         </expanded-state>
         <selected-state>
           <State>
-            <id>RubyAssignmentExpressionInConditionalInspection</id>
+            <id>JavaScript</id>
           </State>
         </selected-state>
       </profile-state>
@@ -215,6 +224,48 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jaelogagent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jaelogagent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jaelogagent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jaelogagent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jaelogagent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jaelogagent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -222,12 +273,12 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="options.lastSelected" value="appearance" />
     <property name="recentsLimit" value="5" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
   </component>
-  <component name="RunManager" selected="Ruby.nginxlogwatch">
+  <component name="RunManager" selected="Ruby.nginxlogstatistics">
     <configuration default="false" name="my_test" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest" temporary="true">
       <predefined_log_file id="RUBY_TESTUNIT" enabled="true" />
       <module name="jaelogagent" />
@@ -427,24 +478,24 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="48" y="-5" width="1319" height="774" extended-state="6" />
+    <frame x="1414" y="-5" width="1233" height="1030" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23917995" sideWeight="0.6551724" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3448276" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25588953" sideWeight="0.74431205" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25568798" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298351" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32833582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32833582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991317" sideWeight="0.6713396" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -509,15 +560,13 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="14" />
+      <option name="time" value="17" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/eventmachine-1.0.1/lib/eventmachine.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="525" column="0" selection-start="19690" selection-end="19690" vertical-scroll-proportion="0.33167082">
-          <folding />
-        </state>
+        <state line="525" column="0" selection-start="19690" selection-end="19690" vertical-scroll-proportion="0.33167082" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/sinatra-1.3.5/lib/sinatra/base.rb">
@@ -529,9 +578,7 @@
     </entry>
     <entry file="file://$USER_HOME$/.rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/net/http.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="761" column="0" selection-start="24183" selection-end="24183" vertical-scroll-proportion="-0.42753622">
-          <folding />
-        </state>
+        <state line="761" column="0" selection-start="24183" selection-end="24183" vertical-scroll-proportion="-0.42753622" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/sinatra-1.3.5/lib/sinatra.rb">
@@ -541,9 +588,7 @@
     </entry>
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/mongo-1.5.2/lib/mongo/connection.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="412" column="0" selection-start="14124" selection-end="14124" vertical-scroll-proportion="0.024509804">
-          <folding />
-        </state>
+        <state line="412" column="0" selection-start="14124" selection-end="14124" vertical-scroll-proportion="0.024509804" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/mongo-1.5.2/lib/mongo/db.rb">
@@ -555,9 +600,7 @@
     </entry>
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/mongo-1.5.2/lib/mongo.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="16" selection-start="1910" selection-end="1910" vertical-scroll-proportion="0.5588235">
-          <folding />
-        </state>
+        <state line="70" column="16" selection-start="1910" selection-end="1910" vertical-scroll-proportion="0.5588235" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/mongo-1.5.2/lib/mongo/collection.rb">
@@ -569,21 +612,24 @@
     </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/rubystubs193/module.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="385" column="15" selection-start="13164" selection-end="13164" vertical-scroll-proportion="0.33333334">
+        <state line="385" column="15" selection-start="13164" selection-end="13164" vertical-scroll-proportion="0.33333334" />
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/rubystubs193/object.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="310" column="29" selection-start="11840" selection-end="11840" vertical-scroll-proportion="0.7251309" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/redis-3.0.2/lib/redis.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="381" column="17" selection-start="8935" selection-end="8939" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/redis-3.0.2/lib/redis/client.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="392" column="51" selection-start="9236" selection-end="9236" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/redis-3.0.2/lib/redis.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="381" column="17" selection-start="8935" selection-end="8939" vertical-scroll-proportion="-3.7741935">
+        <state line="254" column="36" selection-start="5370" selection-end="5370" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -597,28 +643,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/nginxlogwatch.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="21" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/nginxlogstatistics.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="48" selection-start="1157" selection-end="1157" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/rubystubs193/object.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="310" column="29" selection-start="11840" selection-end="11840" vertical-scroll-proportion="0.7251309">
+        <state line="7" column="28" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bin/nginxlogwatch">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="178" column="27" selection-start="4310" selection-end="4310" vertical-scroll-proportion="0.41099477">
+        <state line="208" column="0" selection-start="5237" selection-end="5237" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/nginxlogstatistics.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="36" selection-start="1404" selection-end="1404" vertical-scroll-proportion="1.1629747">
           <folding />
         </state>
       </provider>
