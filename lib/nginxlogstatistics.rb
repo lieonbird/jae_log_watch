@@ -27,6 +27,7 @@ end
 #
 # @param tstart => int: at begin timestamp,units of seconds
 # @param tend => int: at begin timestamp,units of seconds
+# @return int, req timestamp in [tstart,tend)
 def calculate_req_between(app_id,tstart,tend)
   begin
     if tstart > tend
