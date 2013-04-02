@@ -38,6 +38,7 @@ class TestWatch < Test::Unit::TestCase
     t1 = t + (60*60*24)
     t2 = t1 + (60*60*24)
     t3 = t2 + (60*60*24) * 2 # fourth day
+    t4 = t1 + (3600*24*7)
 
     app_id = '10000'
 
@@ -52,6 +53,7 @@ class TestWatch < Test::Unit::TestCase
 
     assert_equal(calculate_req_between(app_id,t1.to_i,t3.to_i),2)
     assert_equal(calculate_req_between(app_id,t1.to_i,t3.to_i+1),3)
+    assert_equal(calculate_req_between(app_id,t1.to_i,t4.to_i+1),-1)
 
     $js_db.del(zkey1,zkey2,zkey3)
 

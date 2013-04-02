@@ -30,7 +30,7 @@ end
 # @return int, req timestamp in [tstart,tend)
 def calculate_req_between(app_id,tstart,tend)
   begin
-    if tstart > tend
+    if tstart > tend || tend > ( tstart + (3600*24*7))
       -1
     else
       t2 = Time.at(tend)

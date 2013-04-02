@@ -157,17 +157,17 @@ end
 def notifyjca(app_id,app_log_file)
   begin
     $uri = URI.parse($cfg['jca_url']) unless $uri
-    $post_body={'app_id' => '', 'user_name' => '', 'group' => 'nginx', 'action' => 'add', 'direction' => 'search',\
+    $post_body={'app_key' => '', 'user_name' => '', 'group' => 'router', 'action' => 'add', 'direction' => 'search',\
       'data' =>[{'id' =>0, 'ip' => "#{$cfg['local_host']}", 'logs' =>[]}]}  unless $post_body
   #  $post_body['data'][0]['ip'] = config['host']
 
-    $post_body['app_id'] = app_id
+    $post_body['app_key'] = app_id
     $post_body['data'][0]['logs'][0]= app_log_file
 
     http = Net::HTTP.new($uri.host, $uri.port)
     request = Net::HTTP::Post.new($uri.request_uri)
     request.body = $post_body.to_s.gsub(/=>/,':')
-  # request["Content-Type"] = "multipart/form-data, boundary=#{BOUNDARY}"
+    request['Content-Type'] = 'application/octet-stream'
 
     respond = http.request(request)
     unless respond.code == '200'
