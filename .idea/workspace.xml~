@@ -681,12 +681,16 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+    <entry file="file://$USER_HOME$/.rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/fileutils.rb">
+=======
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/redis-3.0.2/lib/redis/client.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="260" column="0" selection-start="5491" selection-end="5491" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/rubystubs193/kernel.rb">
+>>>>>>> redis
       <provider selected="true" editor-type-id="text-editor">
         <state line="1571" column="8" selection-start="69334" selection-end="69334" vertical-scroll-proportion="0.0">
           <folding />
@@ -747,42 +751,109 @@
     </entry>
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/redis-3.0.2/lib/redis.rb">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state line="7" column="32" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
+        <state line="94" column="6" selection-start="1951" selection-end="1951" vertical-scroll-proportion="0.0">
+=======
         <state line="8" column="31" selection-start="253" selection-end="253" vertical-scroll-proportion="0.0">
+>>>>>>> redis
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/redis-3.0.2/lib/redis.rb">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state line="761" column="0" selection-start="24183" selection-end="24183" vertical-scroll-proportion="-0.42753622">
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/redis-3.0.2/lib/redis.rb">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="94" column="6" selection-start="1951" selection-end="1951" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/nginxlogstatistics.rb">
+    <entry file="file://$PROJECT_DIR$/test/test_watch.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="43" selection-start="1923" selection-end="1923" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/nginxlogwatch.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="207" column="16" selection-start="5390" selection-end="5390" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/nginxlogwatch.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="30" selection-start="137" selection-end="137" vertical-scroll-proportion="0.0">
+        <state line="26" column="48" selection-start="525" selection-end="525" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/test_watch.rb">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="48" selection-start="525" selection-end="525" vertical-scroll-proportion="0.0">
+    <entry file="file://$PROJECT_DIR$/bin/nginxlogwatch">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="30" selection-start="137" selection-end="137" vertical-scroll-proportion="0.0">
+=======
+        <state line="94" column="6" selection-start="1951" selection-end="1951" vertical-scroll-proportion="0.0">
+>>>>>>> redis
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/redis-3.0.2/lib/redis/client.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="36" selection-start="867" selection-end="867" vertical-scroll-proportion="0.0">
+    <entry file="file://$PROJECT_DIR$/bin/nginxlogwatch">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="30" selection-start="137" selection-end="137" vertical-scroll-proportion="0.0">
+    <entry file="file://$PROJECT_DIR$/lib/nginxlogstatistics.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="43" selection-start="1923" selection-end="1923" vertical-scroll-proportion="0.0">
+
+=======
+    <entry file="file://$PROJECT_DIR$/lib/nginxlogstatistics.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="43" selection-start="1923" selection-end="1923" vertical-scroll-proportion="0.0">
+>>>>>>> redis
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392/gems/redis-3.0.2/lib/redis.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="40" selection-start="641" selection-end="641" vertical-scroll-proportion="0.0">
+    <entry file="file://$PROJECT_DIR$/lib/nginxlogstatistics.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="43" selection-start="1923" selection-end="1923" vertical-scroll-proportion="0.0">
+    <entry file="file://$PROJECT_DIR$/config/nginxlogwatch.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="31" selection-start="253" selection-end="253" vertical-scroll-proportion="0.0">
+=======
+    <entry file="file://$PROJECT_DIR$/lib/nginxlogwatch.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="207" column="16" selection-start="5390" selection-end="5390" vertical-scroll-proportion="0.0">
+>>>>>>> redis
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/nginxlogwatch.yml">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state line="243" column="83" selection-start="6048" selection-end="6048" vertical-scroll-proportion="0.44444445">
+        <state line="8" column="31" selection-start="253" selection-end="253" vertical-scroll-proportion="0.0">
+=======
+        <state line="22" column="30" selection-start="137" selection-end="137" vertical-scroll-proportion="0.0">
+>>>>>>> redis
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/lib/nginxlogstatistics.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="18" selection-start="1008" selection-end="1008" vertical-scroll-proportion="0.2753623">
+    <entry file="file://$PROJECT_DIR$/lib/nginxlogwatch.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="207" column="16" selection-start="5390" selection-end="5390" vertical-scroll-proportion="0.17821783">
+    <entry file="file://$PROJECT_DIR$/lib/nginxlogwatch.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="207" column="16" selection-start="5390" selection-end="5390" vertical-scroll-proportion="0.17821783">
+=======
+    <entry file="file://$PROJECT_DIR$/test/test_watch.rb">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="56" selection-start="543" selection-end="543" vertical-scroll-proportion="0.6402439">
+>>>>>>> redis
           <folding />
         </state>
       </provider>
