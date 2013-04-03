@@ -74,13 +74,13 @@ class TestWatch < Test::Unit::TestCase
   end
 
   def test_loadsavereadpos
-    info = {:inode=>1000,:pos=>1234567,:date=>'20130401'}
+    info = {'inode'=>1000,'pos'=>1234567,'date'=>'20130401'}
     savereadpos(info)
     load_info = loadreadpos
 
-    assert_equal(load_info[:inode],1000)
-    assert_equal(load_info[:pos],1234567)
-    assert_equal(load_info[:date],'20130401')
+    assert_equal(load_info['inode'],1000)
+    assert_equal(load_info['pos'],1234567)
+    assert_equal(load_info['date'],'20130401')
   end
 
   #
@@ -88,24 +88,37 @@ class TestWatch < Test::Unit::TestCase
     line1 = %q{cf-test.jcloud.com - [12/Mar/2013:14:00:45 +0800] "GET /loadbalance/testcase HTTP/1.1" 500 955 "-" "Mozilla/5.0" 127.0.0.1 response_time:0.005 backend_addr:10.12.121.19:38412 load:0 app_id:314 }
     line2 = %q{cf-test.jcloud.com - [12/Mar/2013:14:00:45 +0800] "GET /loadbalance/testcase HTTP/1.1" 500 955 "-" "Mozilla/5.0" 127.0.0.1 response_time:5.0 backend_addr:10.12.121.19:38412 load:0 app_id:3 }
     line3 = %q{cf-test.jcloud.com - [12/Mar/2013:14:00:45 +0800] "GET /loadbalance/testcase HTTP/1.1" 500 955 "-" "Mozilla/5.0" 127.0.0.1 response_time:- backend_addr:10.12.121.19:38412 load:0 app_id:14 }
-    data1 =  getlinedata(line1)
-    data2 =  getlinedata(line2)
-    data3 =  getlinedata(line3)
 
+    t1 = Time.now
+    data1 =  getlinedata(line1)
+    t2 = Time.now
+    data2 =  getlinedata(line2)
+    t3 = Time.now
+    data3 =  getlinedata(line3)
+    t4 = Time.now
+    puts (t2.sec-t1.sec)*1000000 + t2.usec - t1.usec
+    puts (t3.sec-t2.sec)*1000000 + t3.usec - t2.usec
+    puts (t4.sec-t3.sec)*1000000 + t4.usec - t3.usec
+
+    t = Time.mktime(2013,3,12,14,0,45)
+    it = t.to_i
     assert_equal(data1[:app_id],'314')
-    assert_equal(data1[:local_time][:str],'20130312140045')
+    assert_equal(data1[:local_time][:str],'20130312')
+    assert_equal(data1[:local_time][:num],it)
     assert_equal(data1[:uip],'127.0.0.1')
     assert_equal(data1[:resp_time],0.005)
     assert_equal(data1[:backend_addr],'10.12.121.19:38412')
 
     assert_equal(data2[:app_id],'3')
-    assert_equal(data2[:local_time][:str],'20130312140045')
+    assert_equal(data2[:local_time][:str],'20130312')
+    assert_equal(data1[:local_time][:num],it)
     assert_equal(data2[:uip],'127.0.0.1')
     assert_equal(data2[:resp_time],5.0)
     assert_equal(data2[:backend_addr],'10.12.121.19:38412')
 
     assert_equal(data3[:app_id],'14')
-    assert_equal(data3[:local_time][:str],'20130312140045')
+    assert_equal(data3[:local_time][:str],'20130312')
+    assert_equal(data1[:local_time][:num],it)
     assert_equal(data3[:uip],'127.0.0.1')
     assert_equal(data3[:resp_time],0)
     assert_equal(data3[:backend_addr],'10.12.121.19:38412')

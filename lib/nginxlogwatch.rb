@@ -43,6 +43,8 @@ def init
     $cfg_redis.update(YAML.load(f))
   end
 
+  $db = Redis.new($cfg_redis)
+
 end
 
 # method: doerror
@@ -79,30 +81,46 @@ end
 
 #
 def read_app_id(aline)
-    result = aline.scan(/app_id:(\d+)\s/)
-    if result[0] == nil
-      '0'
+#    result = aline.scan(/app_id:(\d+)\s/)
+    if aline =~ /app_id:(\d+)\s/
+      $1
     else
-      result[0][0]
+      '0'
     end
 end
 
 #
 # date +"%Y%m%d %H:%M:%S" --date="11 Mar 2013 16:20:57 +0800"
 # 显示Unix时间戳：Time.now.to_i
+# - [12/Mar/2013:14:00:45 +0800]
 def read_local_time(aline)
-  src = aline.scan(/-\s\[(\S+\s\S+)\]/)
-  if src[0] == nil
-    0
+#  src = aline.scan(/-\s\[(\S+\s\S+)\]/)
+  unless aline =~ /-\s\[(\d+)\/(\w+)\/(\d+):(\d+):(\d+):(\d+)/
+    {:str =>'',:num=>0}
   else
-    result = src[0][0]
-    result.gsub!(/\//,' ')
-    index = result.index(':')
-    result[index] = ' '
-    result = `date +"%Y %m %d %H %M %S" --date="#{result}"`.chomp
-    a = result.split(' ')
-    t = Time.mktime(a[0].to_i,a[1].to_i,a[2].to_i,a[3].to_i,a[4].to_i,a[5].to_i)
-    {:str =>result.gsub(/ /,''),:num=> t.to_i}
+    month = case $2
+              when 'Jan' then '01'
+              when 'Feb' then '02'
+              when 'Mar' then '03'
+              when 'Apr' then '04'
+              when 'May' then '05'
+              when 'Jun' then '06'
+              when 'Jul' then '07'
+              when 'Aug' then '08'
+              when 'Sep' then '09'
+              when 'Oct' then '10'
+              when 'Nov' then '11'
+              else '12'      #Dec
+            end
+#    result = $1
+#    result.gsub!(/\//,' ')
+#    index = result.index(':')
+#    result[index] = ' '
+#    result = `date +"%Y %m %d %H %M %S" --date="#{result}"`.chomp
+#    a = result.split(' ')
+    t = Time.mktime($3.to_i,month.to_i,$1.to_i,$4.to_i,$5.to_i,$6.to_i)
+#    {:str =>result.gsub(/ /,''),:num=> t.to_i}
+    {:str =>"#{$3}#{month}#{$1}",:num=>t.to_i}
   end
 end
 
@@ -138,13 +156,14 @@ end
 #
 def getlinedata(aline)
   data = {:app_id => '0', :local_time =>{}, :uip => '', :resp_time =>0, :backend_addr => ''}
-  app_id = read_app_id(aline)
-  unless app_id == '0'
-    data[:app_id] = app_id
+  data[:app_id] = $1 if aline =~ /app_id:(\d+)\s/
+#  app_id = read_app_id(aline)
+  unless data[:app_id] == '0'
+#    data[:app_id] = app_id
     data[:local_time] = read_local_time(aline)
-    data[:uip] = read_uip(aline)
-    data[:resp_time] = read_resp_time(aline)
-    data[:backend_addr] = read_backend_addr(aline)
+    data[:uip] = $1 if aline =~ /"\s(\S+)\sresponse/ #read_uip(aline)
+    data[:resp_time] = $1.to_f if aline =~ /response_time:(\d+\.?\d*)\s/ #read_resp_time(aline)
+    data[:backend_addr] = $1 if aline =~ /backend_addr:(\S+)\s/ #read_backend_addr(aline)
   end
   data
 end
@@ -188,20 +207,21 @@ end
 # @param config => {}
 # @return  pos
 def readlog(file,pos)
-  begin
+#  begin
 #    db = Mongo::Connection.new(config["db_host"],config["db_port"]).db("jae_nginx_log") #{ |db|  }
 #    db.auth(config["db_user"],config["db_pwd"]) if config["db_user"]
-    db = Redis.new($cfg_redis)
-    cur_date = `date +%Y%m%d`.chomp
-  rescue Exception => e
-    log_error('new db',e)
-  end
+#    db = Redis.new($cfg_redis)
+#    cur_date = `date +%Y%m%d`.chomp
+#  rescue Exception => e
+#    log_error('new db',e)
+#  end
 
   file.pos = pos
 
   while line = file.gets
     #puts line
     line_data = getlinedata(line)
+
     app_id = line_data[:app_id]
     unless  app_id == '0'
       begin
@@ -223,24 +243,30 @@ def readlog(file,pos)
         # use sorted-sets : key is "date"+"pv"+"id"+"z";score is timestamp;member is sum of req
         # use string cache sum of req: key is "date"+"pv"+"id"
         # first get sum of req
-        if db
-          cur_date = line_data[:local_time][:str].slice(0,8)
-          total = db.incr("#{cur_date}pv#{app_id}")
-          db.zadd("#{cur_date}pv#{app_id}z",line_data[:local_time][:num],total)
+        if $db
+          cur_date = line_data[:local_time][:str] #.slice(0,8)
+          total = $db.incr("#{cur_date}pv#{app_id}")
+          $db.zadd("#{cur_date}pv#{app_id}z",line_data[:local_time][:num],total)
 
-          db.zincrby("#{cur_date}uip#{app_id}z",1,line_data[:uip])
-          db.quit()
+          $db.zincrby("#{cur_date}uip#{app_id}z",1,line_data[:uip])
+#          db.quit()
         end
 
       rescue Exception => e
          log_error('readlog',e)
       end
-
     end
 
   end
 
   file.pos
+
+#  begin
+#    db.quit() if db
+#  rescue Exception => e
+#    log_error('db quit',e)
+#  end
+
 end
 
 # findlastlogfile(logfile,lastdate) -> filename
