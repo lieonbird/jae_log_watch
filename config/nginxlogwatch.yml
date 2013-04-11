@@ -1,4 +1,4 @@
-nginx_log_file: /home/lixc/cloudfoundry/.deployments/devbox/log/nginx/nginx_router_access.log
+nginx_log_file: ~/cloudfoundry/.deployments/devbox/log/nginx/nginx_router_access.log
 app_log_dir: /var/vcap.local/router/nginx
 
 jca_url: http://10.28.169.133/log/update.action

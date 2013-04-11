@@ -8,7 +8,7 @@
 #
 #
 #
-require "../lib/nginxlogwatch.rb"
+require File.expand_path('../../lib/nginxlogwatch', __FILE__)
 
 # init param
 init

@@ -1,0 +1,21 @@
+#! /usr/bin/env ruby
+#
+#
+
+require File.expand_path('../../lib/nginx_log_analysis', __FILE__)
+
+DEFAULT_MONITOR_URL = 'http://'
+DEFAULT_MONITOR_TIME = 30
+
+url = ARGV[0] ? ARGV[0] : DEFAULT_MONITOR_URL
+mt  = ARGV[1] ? ARGV[1].to_i : DEFAULT_MONITOR_TIME
+mt = DEFAULT_MONITOR_TIME if mt == 0 || mt > 60
+
+
+analysis = NginxLogAnalysis.new(url,mt)
+
+analysis.work
+
+
+
+
