@@ -4,7 +4,7 @@
 
 require File.expand_path('../../lib/nginx_log_analysis', __FILE__)
 
-DEFAULT_MONITOR_URL = 'http://'
+DEFAULT_MONITOR_URL = 'http://10.23.54.167:8080/datareceivecenter/collectData/sendServiceLog'
 DEFAULT_MONITOR_TIME = 30
 
 url = ARGV[0] ? ARGV[0] : DEFAULT_MONITOR_URL
