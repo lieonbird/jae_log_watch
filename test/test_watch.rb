@@ -154,7 +154,7 @@ class TestWatch < Test::Unit::TestCase
       data = dbtool.get_collect_data(1363068016,1363068046)
       p data
       dbtool.del('20130312*314*')
-      assert_equal(data['data'][0]['metrics']['JAE_ReqNum'],'3')
+      assert_equal(data[0]['metrics']['JAE_ReqNum'],'3')
 
     end
 

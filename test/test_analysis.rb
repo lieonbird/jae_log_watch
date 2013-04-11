@@ -8,7 +8,8 @@ class TestAnalysis < Test::Unit::TestCase
   # to set up fixture information.
   def setup
     # Do nothing
-    @url = 'http://192.168.192.152:8080/datareceivecenter/collectData/sendServiceLog'
+    #@url = 'http://192.168.192.152:8080/datareceivecenter/collectData/sendServiceLog'
+    @url = 'http://10.23.54.167:8080/datareceivecenter/collectData/sendServiceLog'
     @dbtool = NginxLogRedis.new
     line = %q{cf-test.jcloud.com - [12/Apr/2013:14:00:45 +0800] "GET /loadbalance/testcase HTTP/1.1" 500 955 196 "-" "Mozilla/5.0" 127.0.0.1 response_time:0.005 app_id:1140 }
     data =  getlinedata(line)

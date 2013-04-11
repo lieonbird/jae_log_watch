@@ -21,7 +21,8 @@ class NginxLogAnalysis
       http = Net::HTTP.new(uri.host, uri.port)
 
       request = Net::HTTP::Post.new(uri.request_uri)
-      request['Content-Type'] = 'application/octet-stream'
+      #request['Content-Type'] = 'application/octet-stream'
+      request['Content-Type'] = 'application/json'
       request.body = data.to_s.gsub(/=>/,':')
 
       respond = http.request(request)
