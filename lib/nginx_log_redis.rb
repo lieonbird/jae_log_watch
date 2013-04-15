@@ -193,7 +193,7 @@ class NginxLogRedis
     @db.keys("#{day}pv*").each do |key|
       if key =~ /pv(\d+)z/
         app_id = $1
-        h_appdata = {'userId'=>'JAEAPPID','serviceType'=>'JAE','clusterId'=>'','instanceId'=>"#{app_id}",'time'=>"#{tstr}"}
+        h_appdata = {'userId'=>'KNULL','serviceType'=>'JAE','clusterId'=>'','instanceId'=>"#{app_id}",'time'=>"#{tstr}000"}
         h_appdata['metrics'] = getmetrics(app_id,day,tstart,tend)
 
         a_data << h_appdata  unless h_appdata['metrics']['JAE_ReqNum'] == '0'

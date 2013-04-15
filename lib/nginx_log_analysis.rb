@@ -15,7 +15,7 @@ class NginxLogAnalysis
 
 
 # @return [string]
-  def notify_cscp(data)
+  def notify_jms(data)
     begin
       uri = URI.parse(@url)
       http = Net::HTTP.new(uri.host, uri.port)
@@ -26,7 +26,8 @@ class NginxLogAnalysis
       request.body = data.to_s.gsub(/=>/,':')
 
       respond = http.request(request)
-
+      puts request.body
+      puts respond.body
       unless respond.code == '200'
         @log.error("notify cdrc fail! #{request.body}")
         @log.error("cdrc respond code is, #{respond.code};body is,#{respond.body}")
@@ -61,7 +62,7 @@ class NginxLogAnalysis
 
         #
         data = @dbtool.get_collect_data(tlast,tnext)
-        notify_cscp(data) unless data['data'].empty?
+        notify_jms(data) unless data.empty?
 
         @dbtool.save_last_collect_time(tnext)
 
