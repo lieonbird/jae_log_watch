@@ -36,7 +36,7 @@ class TestAnalysis < Test::Unit::TestCase
       t = Time.mktime(2013,4,12,14,0,46)
       analysis = NginxLogAnalysis.new(@url,30)
       data = @dbtool.get_collect_data(0,t.to_i)
-      raise 'cscp return fail' unless analysis.notify_jms(data) == '200'
+      raise 'jms return fail' unless analysis.notify_jms(data) == '200'
     end
 
   end

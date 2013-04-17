@@ -23,3 +23,11 @@ E, [2013-04-15T08:58:06.385112 #3298] ERROR -- : notify cdrc error! Connection r
 E, [2013-04-15T09:16:33.611872 #7784] ERROR -- : notify cdrc error! Connection refused - connect(2)
 E, [2013-04-15T09:40:45.348190 #17543] ERROR -- : notify cdrc error! Connection refused - connect(2)
 E, [2013-04-15T10:18:27.469291 #31329] ERROR -- : notify cdrc error! Connection refused - connect(2)
+E, [2013-04-17T09:20:00.103892 #3592] ERROR -- : notify cdrc error! Connection refused - connect(2)
+E, [2013-04-17T09:24:38.546913 #3663] ERROR -- : notify cdrc error! Connection refused - connect(2)
+E, [2013-04-17T09:46:18.310106 #6317] ERROR -- : notify cdrc error! Connection refused - connect(2)
+E, [2013-04-17T11:08:56.217947 #6442] ERROR -- : notify cdrc error! uninitialized constant NginxLogAnalysis::URI
+E, [2013-04-17T11:13:37.955884 #8220] ERROR -- : notify cdrc error! uninitialized constant NginxLogAnalysis::URI
+E, [2013-04-17T11:15:37.968554 #8220] ERROR -- : notify cdrc error! uninitialized constant NginxLogAnalysis::URI
+E, [2013-04-17T11:18:34.180407 #8220] ERROR -- : notify cdrc error! uninitialized constant NginxLogAnalysis::URI
+E, [2013-04-17T11:22:07.426592 #8220] ERROR -- : notify cdrc error! uninitialized constant NginxLogAnalysis::URI

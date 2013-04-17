@@ -1,6 +1,9 @@
 #
 #
 # 2013-04-09 created
+require 'uri'
+require 'net/http'
+
 require 'logger'
 require File.expand_path('../../lib/nginx_log_redis', __FILE__)
 
@@ -44,7 +47,7 @@ class NginxLogAnalysis
   # @return [nil]
   def work
     loop do
-      tlast = @dbtool.get_last_collect_time
+      tlast = @dbtool.get_last_collect_time.to_i
       tlast = 0 unless tlast
 
       t = Time.now
