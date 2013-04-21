@@ -5,6 +5,7 @@
 require 'yaml'
 require 'redis'
 
+require File.expand_path('../cc_agent', __FILE__)
 
 class NginxLogRedis
 
@@ -22,6 +23,7 @@ class NginxLogRedis
     #  $js_db = Mongo::Connection.new(config["db_host"],config["db_port"]).db("jae_nginx_log")
     #  $js_db.auth(config["db_user"],config["db_pwd"]) if config["db_user"]
     @db = Redis.new(config)
+    @ccdb = CCAgent.new
   end
 
 
@@ -183,21 +185,50 @@ class NginxLogRedis
     h_metrics
   end
 
-  def get_collect_data(tstart,tend)
+  # @param id => int
+  # @return [string]
+  def conver_appid(id)
+    i = id + 1234
+    "#{i.to_s(16)[0,2]}#{i.to_s(36)}#{i.to_s(8)[-2,2]}"
+  end
+
+  def get_collect_data(tstart,tend,mt)
     a_data = []
 
-    t = Time.at(tend)
+    t = Time.at(tend-mt)
     tstr = t.strftime('%Y%m%d%H%M%S')
     day = tstr.slice(0,8)
 
     @db.keys("#{day}pv*").each do |key|
       if key =~ /pv(\d+)z/
         app_id = $1
-        h_appdata = {'userId'=>'KNULL','serviceType'=>'JAE','clusterId'=>'','instanceId'=>"#{app_id}",'time'=>"#{tstr}000"}
+        h_appdata = {'userId'=>'KNULL','serviceType'=>'JAE','clusterId'=>'','instanceId'=>"#{conver_appid(app_id.to_i)}",'time'=>"#{tstr}000"}
         h_appdata['metrics'] = getmetrics(app_id,day,tstart,tend)
 
-        a_data << h_appdata  unless h_appdata['metrics']['JAE_ReqNum'] == '0'
+        a_data << h_appdata  #unless h_appdata['metrics']['JAE_ReqNum'] == '0'
       end
+    end
+
+    a_data
+  end
+
+  def getowner(app_id)
+    @ccdb.getowner(app_id)
+  end
+
+  def get_anaysis_data(tstart,tend,mt)
+    a_data = []
+
+    t = Time.at(tend-mt)
+    tstr = t.strftime('%Y%m%d%H%M%S')
+    day = tstr.slice(0,8)
+
+    # app_id exists ,then create data.可能统计的时间点app并没有创建
+    @ccdb.getapps.each do |app_id|
+      h_appdata = {'userId' => "#{getowner(app_id)}", 'serviceType' => 'JAE', 'clusterId' => '', 'instanceId' => "#{conver_appid(app_id.to_i)}", 'time' => "#{tstr}000"}
+      h_appdata['metrics'] = getmetrics(app_id, day, tstart, tend)
+
+      a_data << h_appdata #unless h_appdata['metrics']['JAE_ReqNum'] == '0'
     end
 
     a_data
@@ -213,7 +244,8 @@ class NginxLogRedis
 
 
   def del(*keys)
-     @db.del( @db.keys(*keys) )
+    a_key = @db.keys(*keys)
+    @db.del( a_key ) unless a_key.empty?
   end
 
   #private

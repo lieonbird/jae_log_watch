@@ -31,3 +31,20 @@ E, [2013-04-17T11:13:37.955884 #8220] ERROR -- : notify cdrc error! uninitialize
 E, [2013-04-17T11:15:37.968554 #8220] ERROR -- : notify cdrc error! uninitialized constant NginxLogAnalysis::URI
 E, [2013-04-17T11:18:34.180407 #8220] ERROR -- : notify cdrc error! uninitialized constant NginxLogAnalysis::URI
 E, [2013-04-17T11:22:07.426592 #8220] ERROR -- : notify cdrc error! uninitialized constant NginxLogAnalysis::URI
+E, [2013-04-19T14:42:45.005809 #9618] ERROR -- : notify cdrc error! end of file reached
+E, [2013-04-19T14:52:05.857874 #9618] ERROR -- : notify cdrc fail! [{"userId":"KNULL", "serviceType":"JAE", "clusterId":"", "instanceId":"4dyg30", "time":"20130419145100000", "metrics":{"JAE_ReqNum":"0", "JAE_RspTime":"0", "JAE_ReqErr":"0", "JAE_ReqBytes":"0", "JAE_RspBytes":"0"}}]
+E, [2013-04-19T14:52:05.858187 #9618] ERROR -- : cdrc respond code is, 400;body is,<html><head><title>Apache Tomcat/6.0.26 - Error report</title><style><!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--></style> </head><body><h1>HTTP Status 400 - java.net.SocketTimeoutException: Read timed out</h1><HR size="1" noshade="noshade"><p><b>type</b> Status report</p><p><b>message</b> <u>java.net.SocketTimeoutException: Read timed out</u></p><p><b>description</b> <u>The request sent by the client was syntactically incorrect (java.net.SocketTimeoutException: Read timed out).</u></p><HR size="1" noshade="noshade"><h3>Apache Tomcat/6.0.26</h3></body></html>
+E, [2013-04-19T16:15:20.356697 #25385] ERROR -- : notify cdrc error! No route to host - connect(2)
+E, [2013-04-19T16:16:21.808610 #25385] ERROR -- : notify cdrc error! No route to host - connect(2)
+E, [2013-04-19T16:16:37.392726 #25385] ERROR -- : notify cdrc error! No route to host - connect(2)
+E, [2013-04-19T16:17:10.116735 #25385] ERROR -- : notify cdrc error! No route to host - connect(2)
+E, [2013-04-19T16:17:16.120753 #25385] ERROR -- : notify cdrc error! No route to host - connect(2)
+E, [2013-04-19T16:17:22.124784 #25385] ERROR -- : notify cdrc error! No route to host - connect(2)
+E, [2013-04-19T16:18:08.848737 #25385] ERROR -- : notify cdrc error! No route to host - connect(2)
+E, [2013-04-19T16:18:38.860635 #25385] ERROR -- : notify cdrc error! No route to host - connect(2)
+E, [2013-04-19T16:18:48.860667 #25385] ERROR -- : notify cdrc error! No route to host - connect(2)
+E, [2013-04-19T16:19:18.872660 #25385] ERROR -- : notify cdrc error! No route to host - connect(2)
+E, [2013-04-19T16:20:51.992661 #25385] ERROR -- : notify cdrc error! Connection timed out - connect(2)
+E, [2013-04-19T16:23:29.560711 #25385] ERROR -- : notify cdrc error! No route to host - connect(2)
+E, [2013-04-19T16:28:47.464605 #25385] ERROR -- : notify cdrc error! No route to host - connect(2)
+E, [2013-04-19T16:29:50.616677 #25385] ERROR -- : notify cdrc error! Connection timed out - connect(2)

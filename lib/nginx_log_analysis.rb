@@ -47,33 +47,43 @@ class NginxLogAnalysis
   # @return [nil]
   def work
     loop do
-      tlast = @dbtool.get_last_collect_time.to_i
-      tlast = 0 unless tlast
-
-      t = Time.now
-      tnow = t.to_i
-      tnext = tlast + @mt
-
-      while tnow > tnext   # deal with delay too long
-                           # recomputer tnext when tlast = 0
-        if tlast == 0
-          tnext = tnow - t.sec
-          while tnext+@mt < tnow
-            tnext += @mt
-          end
-        end
-
-        #
-        data = @dbtool.get_collect_data(tlast,tnext)
-        notify_jms(data) unless data.empty?
-
-        @dbtool.save_last_collect_time(tnext)
-
-        tlast = tnext
-        tnext += @mt
-      end
 
       sleep(@mt)
+
+      begin
+        tlast = @dbtool.get_last_collect_time.to_i
+        tlast = 0 unless tlast
+
+        t = Time.now
+        tnow = t.to_i - 60  # processing one minutes ago
+        tnext = tlast + @mt
+
+        while tnow > tnext   # May need to do many times
+          # recomputer tnext when tlast = 0
+          if tlast == 0
+            tnext = tnow - t.sec
+            while tnext+@mt < tnow
+              tnext += @mt
+            end
+          end
+
+          #
+          data = @dbtool.get_collect_data(tlast,tnext,@mt)
+          notify_jms(data) unless data.empty?
+
+          @dbtool.save_last_collect_time(tnext)
+
+          tlast = tnext
+          tnext += @mt
+        end
+      rescue PG::Error => epg
+        @log.error("ccdb error: #{epg.message}")
+        next
+      rescue Exception => e
+        @log.error("error: #{e.message}")
+        next
+      end
+
     end
   end
 

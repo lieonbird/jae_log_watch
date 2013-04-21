@@ -209,7 +209,7 @@ def notify_jca(app_id,app_log_file)
     $uri = URI.parse($cfg['jca_url']) unless $uri
     $post_body={'app_key' => '', 'user_name' => '', 'group' => 'router', 'action' => 'add', 'direction' => 'search',\
       'data' =>[{'id' =>0, 'ip' => "#{$cfg['local_host']}", 'logs' =>[]}]}  unless $post_body
-  #  $post_body['data'][0]['ip'] = config['host']
+  #  $post_body['user_name'] = $dbtool.getowner(app_id)
 
     $post_body['app_key'] = app_id
     $post_body['data'][0]['logs'][0]= app_log_file
